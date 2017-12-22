@@ -13,3 +13,11 @@ function islandora_collection_sort_islandora_basic_collection_query_backends() {
     ),
   );
 }
+
+function islandora_collection_sort_islandora_object_ingested(AbstractObject $object) {
+  module_load_include('inc', 'islandora_collection_sort', 'includes/utilities');
+  $parents = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOfCollection');
+  foreach ($parents as $parent) {
+    clear_collection_counts_cache($parent['object']['value']);
+  }
+}
