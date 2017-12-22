@@ -1,0 +1,7 @@
+name = "Islandora Collection Sort"
+description = "Impose natural sorting on collection views."
+package = Islandora Tools
+dependencies[] = islandora
+dependencies[] = islandora_basic_collection
+version = 7.x-dev
+core = 7.x

@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_islandora_basic_collection_query_backends().
+ */
+function islandora_collection_sort_islandora_basic_collection_query_backends() {
+  $module_path = drupal_get_path('module', 'islandora_collection_sort');
+  return array(
+    'islandora_collection_sort_query_backend' => array(
+      'title' => t('Natural sort (cached)'),
+      'callable' => 'islandora_collection_sort_islandora_basic_collection_backend_callable',
+      'file' => "$module_path/includes/utilities.inc",
+    ),
+  );
+}
