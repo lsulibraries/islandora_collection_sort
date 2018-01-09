@@ -21,3 +21,19 @@ function islandora_collection_sort_islandora_object_ingested(AbstractObject $obj
     clear_collection_counts_cache($parent['object']['value']);
   }
 }
+
+function islandora_collection_sort_islandora_object_modified(AbstractObject $object) {
+  module_load_include('inc', 'islandora_collection_sort', 'includes/utilities');
+  $parents = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOfCollection');
+  foreach ($parents as $parent) {
+    clear_collection_counts_cache($parent['object']['value']);
+  }
+}
+
+function islandora_collection_sort_islandora_datastream_ingested(AbstractObject $object) {
+  module_load_include('inc', 'islandora_collection_sort', 'includes/utilities');
+  $parents = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOfCollection');
+  foreach ($parents as $parent) {
+    clear_collection_counts_cache($parent['object']['value']);
+  }
+}

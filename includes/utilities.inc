@@ -19,7 +19,7 @@ function islandora_collection_sort_islandora_basic_collection_backend_callable($
 function islandora_collection_sort_get_sorted_items($collection_object, $page, $limit) {
   list($total_count, $results) = islandora_basic_collection_get_member_objects($collection_object, -1, -1);
   uasort($results, function($a, $b) {
-    return strnatcasecmp($a['title']['value'], $b['title']['value']);
+    return strnatcasecmp(str_replace(['"',"'"],[''],$a['title']['value']), str_replace(['"',"'"],[''],$b['title']['value']));
   });
 
   $offset = $page * $limit;
